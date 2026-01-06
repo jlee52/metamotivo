@@ -10,7 +10,7 @@ from typing import Dict, Tuple
 
 from .model import FBModel, config_from_dict
 from .model import Config as FBModelConfig
-from ..nn_models import weight_init, _soft_update_params, eval_mode
+from ..nn_models_aux import weight_init, _soft_update_params, eval_mode
 from ..misc.zbuffer import ZBuffer
 from pathlib import Path
 import json
@@ -191,13 +191,13 @@ class FBAgent:
         with torch.no_grad():
             dist = self._model._actor(next_obs, z, self._model.cfg.actor_std)
             next_action = dist.sample(clip=self.cfg.train.stddev_clip)
-            target_Fs = self._model._target_forward_map(next_obs, z, next_action)[0]  # num_parallel x batch x z_dim
+            target_Fs = self._model._target_forward_map(next_obs, z, next_action)  # num_parallel x batch x z_dim
             target_B = self._model._target_backward_map(goal)  # batch x z_dim
             target_Ms = torch.matmul(target_Fs, target_B.T)  # num_parallel x batch x batch
             _, _, target_M = self.get_targets_uncertainty(target_Ms, self.cfg.train.fb_pessimism_penalty)  # batch x batch
 
         # compute FB loss
-        Fs = self._model._forward_map(obs, z, action)[0]  # num_parallel x batch x z_dim
+        Fs = self._model._forward_map(obs, z, action)  # num_parallel x batch x z_dim
         B = self._model._backward_map(goal)  # batch x z_dim
         Ms = torch.matmul(Fs, B.T)  # num_parallel x batch x batch
 

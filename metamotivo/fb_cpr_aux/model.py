@@ -7,7 +7,7 @@ import dataclasses
 from ..fb.model import FBModel
 from ..fb.model import Config as FBConfig
 from ..fb.model import ArchiConfig as FBArchiConfig
-from ..nn_models import build_forward, build_discriminator
+from ..nn_models_aux import build_forward, build_discriminator
 from .. import config_from_dict
 import torch
 import copy
