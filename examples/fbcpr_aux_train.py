@@ -467,10 +467,10 @@ if __name__ == "__main__":
     agent_config.model.seq_length = 8
     # archi
     # the config of the model trained in the paper
-    model, hidden_dim, hidden_layers = "simple", 1024, 2
+    # model, hidden_dim, hidden_layers = "simple", 1024, 2
     # uncomment the line below for the config of model deployed in the demo
     # WARNING: you need to use compile=True on a A100 GPU or better, as otherwise training can be very slow
-    # model, hidden_dim, hidden_layers = "residual", 2048, 12
+    model, hidden_dim, hidden_layers = "residual", 1024, 12
     agent_config.model.archi.z_dim = 256
     agent_config.model.archi.b.norm = 1
     agent_config.model.archi.norm_z = 1
