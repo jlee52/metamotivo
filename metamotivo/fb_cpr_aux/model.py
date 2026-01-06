@@ -4,9 +4,9 @@
 # LICENSE file in the root directory of this source tree.
 
 import dataclasses
-from ..fb.model import FBModel
-from ..fb.model import Config as FBConfig
-from ..fb.model import ArchiConfig as FBArchiConfig
+from ..fb_aux.model import FBModel
+from ..fb_aux.model import Config as FBConfig
+from ..fb_aux.model import ArchiConfig as FBArchiConfig
 from ..nn_models_aux import build_forward, build_discriminator
 from .. import config_from_dict
 import torch

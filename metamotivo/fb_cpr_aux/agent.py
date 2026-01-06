@@ -10,9 +10,9 @@ import torch
 import torch.nn.functional as F
 from torch import autograd
 
-from ..fb.agent import FBAgent
-from ..fb.agent import TrainConfig as FBTrainConfig
-from ..nn_models import _soft_update_params, eval_mode
+from ..fb_aux.agent import FBAgent
+from ..fb_aux.agent import TrainConfig as FBTrainConfig
+from ..nn_models_aux import _soft_update_params, eval_mode
 from .model import Config as FBcprModelConfig
 from .model import FBcprModel, config_from_dict
 
